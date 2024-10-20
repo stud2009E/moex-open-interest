@@ -1,22 +1,15 @@
 package pub.ta.open.interest.Entity;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import lombok.Data;
-
-import java.time.OffsetDateTime;
 
 @Data
 @Entity(name = "moex_data")
-public class MOEXDataEntity {
-    @Id
-    @Column(name = "date")
-    private OffsetDateTime date;
-    @Id
-    @Column(name = "futures", length = 10)
-    private String futures;
-
+public class MOEXData {
+    @EmbeddedId
+    private MOEXId id;
     @Column(name = "op_juridical_long")
     private Double opJuridicalLong;
     @Column(name = "op_juridical_short")

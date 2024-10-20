@@ -1,16 +1,20 @@
-package pub.ta.open.interest;
+package pub.ta.open.interest.dto;
 
 import com.fasterxml.jackson.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import pub.ta.open.interest.Tools;
 
 import java.io.Serializable;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class MOEXData implements Serializable {
+public class MOEXDataDto implements Serializable {
+
+    @JsonProperty("Date")
+    String date;
     @JsonProperty("JuridicalLong")
     Double juridicalLong;
     @JsonProperty("JuridicalShort")
@@ -61,6 +65,7 @@ public class MOEXData implements Serializable {
     @Override
     public String toString() {
         return "MOEXData{" +
+                ", date='" + date + '\'' +
                 ", juridicalLong='" + juridicalLong + '\'' +
                 ", juridicalShort='" + juridicalShort + '\'' +
                 ", physicalLong='" + physicalLong + '\'' +
