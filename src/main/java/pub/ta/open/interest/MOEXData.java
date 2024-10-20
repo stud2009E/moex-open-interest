@@ -1,100 +1,71 @@
 package pub.ta.open.interest;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.time.OffsetDateTime;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class MOEXData implements Serializable {
-    @JsonProperty("Date")
-    private String date;
     @JsonProperty("JuridicalLong")
-    String juridicalLong;
+    Double juridicalLong;
     @JsonProperty("JuridicalShort")
-    String juridicalShort;
+    Double juridicalShort;
     @JsonProperty("PhysicalLong")
-    String physicalLong;
+    Double physicalLong;
     @JsonProperty("PhysicalShort")
-    String physicalShort;
+    Double physicalShort;
     @JsonProperty("Summary")
-    String Summary;
-
-    public MOEXData() {
-    }
-
-    public MOEXData(String date, String juridicalLong, String juridicalShort, String physicalLong, String physicalShort, String summary) {
-        this.date = date;
-        this.juridicalLong = juridicalLong;
-        this.juridicalShort = juridicalShort;
-        this.physicalLong = physicalLong;
-        this.physicalShort = physicalShort;
-        Summary = summary;
-    }
+    Double summary;
 
     @JsonGetter
-    public String getDate() {
-        return date;
-    }
-
-    @JsonGetter
-    public String getJuridicalLong() {
+    public Double getJuridicalLong() {
         return juridicalLong;
     }
-
     @JsonGetter
-    public String getJuridicalShort() {
+    public Double getJuridicalShort() {
         return juridicalShort;
     }
-
     @JsonGetter
-    public String getPhysicalLong() {
+    public Double getPhysicalLong() {
         return physicalLong;
     }
-
     @JsonGetter
-    public String getPhysicalShort() {
+    public Double getPhysicalShort() {
         return physicalShort;
     }
-
     @JsonGetter
-    public String getSummary() {
-        return Summary;
+    public Double getSummary() {
+        return summary;
     }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
+    @JsonSetter
     public void setJuridicalLong(String juridicalLong) {
-        this.juridicalLong = juridicalLong;
+        this.juridicalLong = Tools.fillNumeric(juridicalLong);
     }
-
     public void setJuridicalShort(String juridicalShort) {
-        this.juridicalShort = juridicalShort;
+        this.juridicalShort = Tools.fillNumeric(juridicalShort);
     }
-
     public void setPhysicalLong(String physicalLong) {
-        this.physicalLong = physicalLong;
+        this.physicalLong = Tools.fillNumeric(physicalLong);
     }
-
     public void setPhysicalShort(String physicalShort) {
-        this.physicalShort = physicalShort;
+        this.physicalShort = Tools.fillNumeric(physicalShort);
     }
-
     public void setSummary(String summary) {
-        Summary = summary;
+        this.summary = Tools.fillNumeric(summary);
     }
-
     @Override
     public String toString() {
         return "MOEXData{" +
-                "date='" + date + '\'' +
                 ", juridicalLong='" + juridicalLong + '\'' +
                 ", juridicalShort='" + juridicalShort + '\'' +
                 ", physicalLong='" + physicalLong + '\'' +
                 ", physicalShort='" + physicalShort + '\'' +
-                ", Summary='" + Summary + '\'' +
+                ", Summary='" + summary + '\'' +
                 '}';
     }
 }
