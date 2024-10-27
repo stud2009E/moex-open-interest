@@ -12,9 +12,10 @@ import lombok.ToString;
 @Entity
 @Table(name = "moex_data")
 @ToString
-@EqualsAndHashCode
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class MoexData {
     @EmbeddedId
+    @EqualsAndHashCode.Include
     private MoexId id;
     @Column(name = "op_juridical_long")
     private Double opJuridicalLong;

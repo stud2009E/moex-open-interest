@@ -4,18 +4,15 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pub.ta.open.interest.entity.MoexData;
-import pub.ta.open.interest.exception.MoexException;
 import pub.ta.open.interest.mapper.MoexDataMapper;
 import pub.ta.open.interest.provider.MoexProvider;
 import pub.ta.open.interest.utils.Tools;
 import pub.ta.open.interest.dto.MOEXDataDto;
-import pub.ta.open.interest.entity.MoexId;
 import pub.ta.open.interest.repository.MoexRepository;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -25,7 +22,7 @@ public class MoexService {
     private final MoexProvider provider;
 
     @Transactional
-    public void firstSave(String futures) throws MoexException {
+    public void firstSave(String futures){
         List<MOEXDataDto> dts;
         List<MoexData> data = new ArrayList<>();
         List<LocalDate> dates =  Tools.getListDate();

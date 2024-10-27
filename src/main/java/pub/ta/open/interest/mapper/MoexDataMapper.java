@@ -3,13 +3,12 @@ package pub.ta.open.interest.mapper;
 import pub.ta.open.interest.entity.MoexData;
 import pub.ta.open.interest.entity.MoexId;
 import pub.ta.open.interest.dto.MOEXDataDto;
-import pub.ta.open.interest.exception.MoexException;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 public class MoexDataMapper {
-    public static MoexData fromDto(List<MOEXDataDto> dts, String futures) throws MoexException {
+    public static MoexData fromDto(List<MOEXDataDto> dts, String futures) {
         if (dts == null){
             throw new IllegalArgumentException("Пустой объект");
         }
