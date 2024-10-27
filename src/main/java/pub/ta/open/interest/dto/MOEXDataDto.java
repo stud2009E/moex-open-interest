@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import pub.ta.open.interest.Tools;
+import pub.ta.open.interest.utils.Tools;
 
 import java.io.Serializable;
 
@@ -14,7 +14,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 @ToString(onlyExplicitlyIncluded = true)
 public class MOEXDataDto implements Serializable {
-
     @JsonProperty("Date")
             @ToString.Include
     String date;
@@ -65,15 +64,4 @@ public class MOEXDataDto implements Serializable {
     public void setSummary(String summary) {
         this.summary = Tools.fillNumeric(summary);
     }
-//    @Override
-//    public String toString() {
-//        return "MOEXData{" +
-//                ", date='" + date + '\'' +
-//                ", juridicalLong='" + juridicalLong + '\'' +
-//                ", juridicalShort='" + juridicalShort + '\'' +
-//                ", physicalLong='" + physicalLong + '\'' +
-//                ", physicalShort='" + physicalShort + '\'' +
-//                ", Summary='" + summary + '\'' +
-//                '}';
-//    }
 }

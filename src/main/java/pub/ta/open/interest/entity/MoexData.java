@@ -5,10 +5,14 @@ import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 @Data
 @Entity
 @Table(name = "moex_data")
+@ToString
+@EqualsAndHashCode
 public class MoexData {
     @EmbeddedId
     private MoexId id;

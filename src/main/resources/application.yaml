@@ -16,7 +16,3 @@ spring:
         springframework:
           transaction: DEBUG
         hibernate: DEBUG
-
-
-period:
-  days: 182

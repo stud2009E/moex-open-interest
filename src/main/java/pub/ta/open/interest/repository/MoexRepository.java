@@ -9,6 +9,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Repository
-public interface MOEXRepository extends JpaRepository<MoexData, MoexId> {
+public interface MoexRepository extends JpaRepository<MoexData, MoexId> {
     List<MoexData> findAllByIdFuturesAndIdDateGreaterThan(String futures, LocalDate date);
 }

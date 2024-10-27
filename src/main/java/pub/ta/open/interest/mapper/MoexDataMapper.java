@@ -1,19 +1,15 @@
 package pub.ta.open.interest.mapper;
 
-import org.springframework.stereotype.Component;
 import pub.ta.open.interest.entity.MoexData;
 import pub.ta.open.interest.entity.MoexId;
 import pub.ta.open.interest.dto.MOEXDataDto;
-import pub.ta.open.interest.exception.MOEXException;
+import pub.ta.open.interest.exception.MoexException;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-
-@Component
-public class MOEXDataMapper implements MOEXMapper{
-    @Override
-    public MoexData fromDto(List<MOEXDataDto> dts, String futures) throws MOEXException {
+public class MoexDataMapper {
+    public static MoexData fromDto(List<MOEXDataDto> dts, String futures) throws MoexException {
         if (dts == null){
             throw new IllegalArgumentException("Пустой объект");
         }
@@ -45,7 +41,7 @@ public class MOEXDataMapper implements MOEXMapper{
         return moexData;
     }
 
-    private LocalDate fillDate(String date){
+    private static LocalDate fillDate(String date){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         return LocalDate.parse(date, formatter);
     }

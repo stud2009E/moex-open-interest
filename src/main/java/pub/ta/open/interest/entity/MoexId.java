@@ -18,8 +18,6 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class MoexId implements Serializable {
     @Column(name = "date")
-    //@DateTimeFormat(pattern = "yyyy-MM-dd")
-    //@JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
     @Column(name = "futures", length = 10)
     private String futures;
