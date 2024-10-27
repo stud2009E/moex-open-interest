@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import pub.ta.open.interest.Tools;
 
 import java.io.Serializable;
@@ -11,9 +12,11 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString(onlyExplicitlyIncluded = true)
 public class MOEXDataDto implements Serializable {
 
     @JsonProperty("Date")
+            @ToString.Include
     String date;
     @JsonProperty("JuridicalLong")
     Double juridicalLong;
@@ -62,15 +65,15 @@ public class MOEXDataDto implements Serializable {
     public void setSummary(String summary) {
         this.summary = Tools.fillNumeric(summary);
     }
-    @Override
-    public String toString() {
-        return "MOEXData{" +
-                ", date='" + date + '\'' +
-                ", juridicalLong='" + juridicalLong + '\'' +
-                ", juridicalShort='" + juridicalShort + '\'' +
-                ", physicalLong='" + physicalLong + '\'' +
-                ", physicalShort='" + physicalShort + '\'' +
-                ", Summary='" + summary + '\'' +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "MOEXData{" +
+//                ", date='" + date + '\'' +
+//                ", juridicalLong='" + juridicalLong + '\'' +
+//                ", juridicalShort='" + juridicalShort + '\'' +
+//                ", physicalLong='" + physicalLong + '\'' +
+//                ", physicalShort='" + physicalShort + '\'' +
+//                ", Summary='" + summary + '\'' +
+//                '}';
+//    }
 }

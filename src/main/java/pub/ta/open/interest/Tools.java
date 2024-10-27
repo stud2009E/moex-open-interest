@@ -1,17 +1,27 @@
 package pub.ta.open.interest;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Tools {
+
+    @Value("${period.days}")
+    private static Integer period;
+
     /**
      * Получение даты в нужном формате.
      * @return дата
      */
     public static String getDate(){
         return getFormatter().format(java.time.LocalDate.now());
+    };
+
+    public static String getDate(LocalDate date){
+        return getFormatter().format(date);
     };
 
     /**
@@ -23,7 +33,7 @@ public class Tools {
 
         DateTimeFormatter formatter = getFormatter();
 
-        for (int i = 1; i < 61; i++){
+        for (int i = 1; i < 182; i++){
             LocalDate date = java.time.LocalDate.now().minusDays(i);
             dates.add(formatter.format(date));
         }

@@ -1,27 +1,27 @@
 package pub.ta.open.interest.mapper;
 
-import org.springframework.context.annotation.Bean;
-import pub.ta.open.interest.Entity.MOEXData;
-import pub.ta.open.interest.Entity.MOEXId;
+import org.springframework.stereotype.Component;
+import pub.ta.open.interest.entity.MoexData;
+import pub.ta.open.interest.entity.MoexId;
 import pub.ta.open.interest.dto.MOEXDataDto;
 import pub.ta.open.interest.exception.MOEXException;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Locale;
 
+@Component
 public class MOEXDataMapper implements MOEXMapper{
     @Override
-    public MOEXData fromDto(List<MOEXDataDto> dts, String futures) {
+    public MoexData fromDto(List<MOEXDataDto> dts, String futures) throws MOEXException {
         if (dts == null){
-            throw new MOEXException("Пустой объект");
+            throw new IllegalArgumentException("Пустой объект");
         }
 
         MOEXDataDto opDataDto = dts.get(0);
         MOEXDataDto npDataDto = dts.get(3);
-        MOEXData moexData = new MOEXData();
-        MOEXId id = new MOEXId();
+        MoexData moexData = new MoexData();
+        MoexId id = new MoexId();
 
 //        Заполнение ключа
         id.setFutures(futures);
@@ -45,11 +45,8 @@ public class MOEXDataMapper implements MOEXMapper{
         return moexData;
     }
 
-    private OffsetDateTime fillDate(String date){
-
+    private LocalDate fillDate(String date){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-        LocalDateTime ldt = LocalDate.parse(date, formatter).atTime(LocalTime.NOON);
-        return ldt.atOffset(ZoneOffset.UTC);
-
+        return LocalDate.parse(date, formatter);
     }
 }

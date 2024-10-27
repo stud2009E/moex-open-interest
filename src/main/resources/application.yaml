@@ -9,10 +9,14 @@ spring:
       hibernate:
         default_schema: moex
         format_sql: true
-        ddl-auto: none
+        ddl-auto: validate
   logging:
     level:
       org:
         springframework:
           transaction: DEBUG
         hibernate: DEBUG
+
+
+period:
+  days: 182

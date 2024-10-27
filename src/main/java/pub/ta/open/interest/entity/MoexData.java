@@ -1,15 +1,17 @@
-package pub.ta.open.interest.Entity;
+package pub.ta.open.interest.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.Data;
 
 @Data
-@Entity(name = "moex_data")
-public class MOEXData {
+@Entity
+@Table(name = "moex_data")
+public class MoexData {
     @EmbeddedId
-    private MOEXId id;
+    private MoexId id;
     @Column(name = "op_juridical_long")
     private Double opJuridicalLong;
     @Column(name = "op_juridical_short")

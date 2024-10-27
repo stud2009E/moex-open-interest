@@ -1,9 +1,11 @@
 package pub.ta.open.interest;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import pub.ta.open.interest.dto.MOEXDataDto;
 
+@Component
 public class MOEXProvider {
     private final RestTemplate restTemplate = new RestTemplate();
     public MOEXDataDto[] getByDate(String date, String name) {

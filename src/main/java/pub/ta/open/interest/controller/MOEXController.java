@@ -1,26 +1,35 @@
 package pub.ta.open.interest.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import pub.ta.open.interest.Entity.MOEXData;
-import pub.ta.open.interest.service.MOEXServiceImpl;
+import org.springframework.web.bind.annotation.RestController;
+import pub.ta.open.interest.entity.MoexData;
+import pub.ta.open.interest.service.MOEXService;
 
-import java.util.Arrays;
+import java.time.LocalDate;
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/MOEX")
+@RequiredArgsConstructor
 public class MOEXController {
-    @Autowired
-    private MOEXServiceImpl service;
-
-    @GetMapping(value = "/{id}")
-    public List<MOEXData> get(@PathVariable("id") String id, Model mode){
-         return service.save(id);
-        //return Arrays.stream(arrDto).toList();
+    private final MOEXService service;
+    @GetMapping(value = "/first-get/{futures}")
+    public void firstSave(@PathVariable("futures") String futures){
+        service.firstSave(futures);
+    }
+    @GetMapping(value = "/{futures}")
+    public List<MoexData> getByFutures(@PathVariable("futures") String futures){
+         return service.getByFutures(futures);
+    }
+    @GetMapping(value = "/{futures}/{date}")
+    public MoexData getByFuturesAndDate(@PathVariable("futures") String futures, @PathVariable("date") LocalDate date){
+        return service.getOneByFuturesAndDate(futures, date);
+    }
+    @GetMapping(value = "/from/{futures}/{date}")
+    public List<MoexData> getByFuturesFromDate(@PathVariable("futures") String futures, @PathVariable("date") LocalDate date){
+        return service.getAllByFuturesFromDate(futures, date);
     }
 }
