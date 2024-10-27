@@ -1,0 +1,30 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet  author="zhernovoy"  id="createTable-moex">
+        <createTable remarks="Данные MOEX"
+                     schemaName="moex"
+                     tableName="moex_data">
+            <column name="date" type="date" remarks="Дата">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="futures" type="char(10)" remarks="Фьючерс">
+                <constraints primaryKey="true"/>
+            </column>
+            <column  name="op_juridical_long" type="double"/>
+            <column  name="op_juridical_short" type="double"/>
+            <column  name="op_physical_long" type="double"/>
+            <column  name="op_physical_short" type="double"/>
+            <column  name="op_summary" type="double"/>
+            <column  name="np_juridical_long" type="double"/>
+            <column  name="np_juridical_short" type="double"/>
+            <column  name="np_physical_long" type="double"/>
+            <column  name="np_physical_short" type="double"/>
+            <column  name="np_summary" type="double"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
